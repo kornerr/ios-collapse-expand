@@ -1,0 +1,9 @@
+name: CollapseExpand
+options:
+    bundleIdPrefix: su.kornerr
+targets:
+    CollapseExpand:
+        type: application
+        platform: iOS
+        deploymentTarget: "9.0"
+        sources: [App, Components]
