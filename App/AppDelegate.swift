@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Create window.
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        self.setupCoordinator()
+        self.setupApplication()
 
         // Display window.
         self.window!.backgroundColor = UIColor.white
@@ -24,25 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         return true
     }
 
-    // MARK: - COORDINATOR
+    // MARK: - APPLICATION
 
-    //private var sampleCoordinator: SampleCoordinator!
-    
-    private func setupCoordinator()
-    {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
+    private func setupApplication()
+    {        
+        let storyboard = UIStoryboard.init(name: "MainVC", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
         self.window!.rootViewController = vc
-        /*
-        self.sampleCoordinator = SampleCoordinator()
-        self.window!.rootViewController = self.sampleCoordinator.rootVC
-
-        // If root VC changes, re-assign it to the window.
-        self.sampleCoordinator.rootVCChanged = { [weak self] in
-            guard let this = self else { return }
-            this.window!.rootViewController = this.sampleCoordinator.rootVC
-        }
-        */
     }
 
 }

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		BF_232358545730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_879971130433 /* AppDelegate.swift */; };
+		BF_468979976040 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_402055868080 /* MainVC.swift */; };
 		BF_495835508772 = {isa = PBXBuildFile; fileRef = FR_451058661480 /* CollapseExpand.app */; };
+		BF_855343681623 /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FR_767332964640 /* MainVC.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FR_402055868080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FR_451058661480 /* CollapseExpand.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CollapseExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FR_767332964640 /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
 		FR_879971130433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,6 +34,8 @@
 			children = (
 				FR_879971130433 /* AppDelegate.swift */,
 				FR_585019282326 /* Info.plist */,
+				FR_767332964640 /* MainVC.storyboard */,
+				FR_402055868080 /* MainVC.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -59,6 +65,7 @@
 			buildConfigurationList = "CL_451058661480-1" /* Build configuration list for PBXNativeTarget "CollapseExpand" */;
 			buildPhases = (
 				SBP_45105866148 /* Sources */,
+				RBP_45105866148 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -92,12 +99,24 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		RBP_45105866148 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF_855343681623 /* MainVC.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		SBP_45105866148 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BF_232358545730 /* AppDelegate.swift in Sources */,
+				BF_468979976040 /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
