@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             guard let this = self else { return }
             let translation = this.detector.translation
             LOG("Current translation: '\(translation)'")
-            this.mainVC.detailsHeight = this.mainVC.detailsHeightOrig - translation
+            this.mainVC.detailsHeight = this.mainVC.detailsHeightMin - translation
         }
     }
 

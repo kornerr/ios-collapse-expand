@@ -30,6 +30,7 @@ class MainVC: UIViewController
     // MARK: - DETAILS
 
     @IBOutlet private var detailsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var detailsTopConstraint: NSLayoutConstraint!
     
     @IBOutlet private(set) var detailsView: UIView!
 
@@ -41,15 +42,35 @@ class MainVC: UIViewController
         }
         set
         {
-            self.detailsHeightConstraint.constant = newValue
+            var height = newValue
+            // Restrict lower value.
+            if height < self.detailsHeightMin
+            {
+                height = self.detailsHeightMin
+            }
+            // Restrict upper value.
+            if height > self.detailsHeightMax
+            {
+                height = self.detailsHeightMax
+            }
+            // Apply.
+            self.detailsHeightConstraint.constant = height
         }
     }
 
-    private(set) var detailsHeightOrig: CGFloat = 0
+    private(set) var detailsHeightMin: CGFloat = 0
+    private(set) var detailsHeightMax: CGFloat = 0
 
     private func setupDetails()
     {
-        self.detailsHeightOrig = self.detailsHeightConstraint.constant
+        self.detailsHeightMin = self.detailsHeightConstraint.constant
+        self.detailsHeightMax = self.detailsView.frame.size.height
+
+        // Disable top constraint since we no longer need it.
+        self.detailsTopConstraint.isActive = false
+        self.detailsView.superview?.layoutIfNeeded()
+
+        LOG("details height min: '\(self.detailsHeightMin)' max: '\(self.detailsHeightMax)'")
     }
     
 }

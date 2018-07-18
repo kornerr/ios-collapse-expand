@@ -39,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abX-Xc-cYo">
-                                        <rect key="frame" x="0.0" y="448" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJ3-qa-UeX" userLabel="Handler View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
@@ -49,7 +49,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag details (this part) up to expand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79h-R7-rnT">
-                                                <rect key="frame" x="0.0" y="30" width="320" height="70"/>
+                                                <rect key="frame" x="0.0" y="30" width="320" height="518"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                             <constraint firstItem="FJ3-qa-UeX" firstAttribute="leading" secondItem="abX-Xc-cYo" secondAttribute="leading" id="K2M-n2-5EF"/>
                                             <constraint firstAttribute="trailing" secondItem="79h-R7-rnT" secondAttribute="trailing" id="RQ3-fh-JHi"/>
                                             <constraint firstAttribute="bottom" secondItem="79h-R7-rnT" secondAttribute="bottom" id="VUz-KP-kGC"/>
-                                            <constraint firstAttribute="height" constant="100" id="VoS-fp-vlz"/>
+                                            <constraint firstAttribute="height" priority="750" constant="100" id="VoS-fp-vlz"/>
                                             <constraint firstAttribute="trailing" secondItem="FJ3-qa-UeX" secondAttribute="trailing" id="aYd-0l-T6W"/>
                                             <constraint firstItem="79h-R7-rnT" firstAttribute="top" secondItem="FJ3-qa-UeX" secondAttribute="bottom" id="n2s-tq-7I5"/>
                                         </constraints>
@@ -70,7 +70,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="abX-Xc-cYo" firstAttribute="top" secondItem="hyO-ke-VRO" secondAttribute="top" priority="750" id="26x-im-IKq"/>
+                                    <constraint firstItem="abX-Xc-cYo" firstAttribute="top" secondItem="hyO-ke-VRO" secondAttribute="top" id="26x-im-IKq"/>
                                     <constraint firstAttribute="trailing" secondItem="abX-Xc-cYo" secondAttribute="trailing" id="4bM-9u-G3v"/>
                                     <constraint firstAttribute="trailing" secondItem="pEE-VG-EMy" secondAttribute="trailing" id="7QQ-al-gze"/>
                                     <constraint firstAttribute="bottom" secondItem="abX-Xc-cYo" secondAttribute="bottom" id="AHR-iP-U4o"/>
@@ -92,6 +92,7 @@
                     </view>
                     <connections>
                         <outlet property="detailsHeightConstraint" destination="VoS-fp-vlz" id="dRr-0S-RgL"/>
+                        <outlet property="detailsTopConstraint" destination="26x-im-IKq" id="ORq-bA-B64"/>
                         <outlet property="detailsView" destination="abX-Xc-cYo" id="IeR-qk-R1v"/>
                     </connections>
                 </viewController>
