@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BF_232358545730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_879971130433 /* AppDelegate.swift */; };
+		BF_441919090723 /* CollapseExpansionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_904359042796 /* CollapseExpansionDetector.swift */; };
 		BF_468979976040 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_402055868080 /* MainVC.swift */; };
 		BF_495835508772 = {isa = PBXBuildFile; fileRef = FR_451058661480 /* CollapseExpand.app */; };
+		BF_805627005570 /* SimpleCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_767727172060 /* SimpleCallback.swift */; };
 		BF_855343681623 /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FR_767332964640 /* MainVC.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -18,13 +20,16 @@
 		FR_451058661480 /* CollapseExpand.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CollapseExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FR_767332964640 /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
+		FR_767727172060 /* SimpleCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallback.swift; sourceTree = "<group>"; };
 		FR_879971130433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FR_904359042796 /* CollapseExpansionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseExpansionDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		G_4197929496137 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FR_904359042796 /* CollapseExpansionDetector.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -36,6 +41,7 @@
 				FR_585019282326 /* Info.plist */,
 				FR_767332964640 /* MainVC.storyboard */,
 				FR_402055868080 /* MainVC.swift */,
+				FR_767727172060 /* SimpleCallback.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -116,7 +122,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_232358545730 /* AppDelegate.swift in Sources */,
+				BF_441919090723 /* CollapseExpansionDetector.swift in Sources */,
 				BF_468979976040 /* MainVC.swift in Sources */,
+				BF_805627005570 /* SimpleCallback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
