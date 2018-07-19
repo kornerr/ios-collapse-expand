@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF_104030293715 /* LayoutReportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_758158521359 /* LayoutReportingView.swift */; };
 		BF_232358545730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_879971130433 /* AppDelegate.swift */; };
 		BF_468979976040 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_402055868080 /* MainVC.swift */; };
 		BF_495835508772 = {isa = PBXBuildFile; fileRef = FR_451058661480 /* CollapseExpand.app */; };
@@ -22,6 +23,7 @@
 		FR_451058661480 /* CollapseExpand.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CollapseExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FR_723695850563 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		FR_758158521359 /* LayoutReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutReportingView.swift; sourceTree = "<group>"; };
 		FR_767332964640 /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
 		FR_767727172060 /* SimpleCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallback.swift; sourceTree = "<group>"; };
 		FR_879971130433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +34,7 @@
 			isa = PBXGroup;
 			children = (
 				FR_389386417763 /* CollapseExpansionController.swift */,
+				FR_758158521359 /* LayoutReportingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			files = (
 				BF_232358545730 /* AppDelegate.swift in Sources */,
 				BF_650573867707 /* CollapseExpansionController.swift in Sources */,
+				BF_104030293715 /* LayoutReportingView.swift in Sources */,
 				BF_468979976040 /* MainVC.swift in Sources */,
 				BF_805627005570 /* SimpleCallback.swift in Sources */,
 			);

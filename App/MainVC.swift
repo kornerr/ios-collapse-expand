@@ -29,10 +29,11 @@ class MainVC: UIViewController
 
     // MARK: - DETAILS
 
+    @IBOutlet private var detailsBackgroundView: UIView!
     @IBOutlet private var detailsHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var detailsTopConstraint: NSLayoutConstraint!
     
-    @IBOutlet private(set) var detailsView: UIView!
+    @IBOutlet private(set) var detailsView: LayoutReportingView!
     @IBOutlet var detailsTitleLabel: UILabel!
     
     var detailsTitle: String?
@@ -78,12 +79,26 @@ class MainVC: UIViewController
     {
         self.detailsHeightMin = self.detailsHeightConstraint.constant
         self.detailsHeightMax = self.detailsView.frame.size.height
+        LOG("details height min: '\(self.detailsHeightMin)' max: '\(self.detailsHeightMax)'")
 
+        /*
         // Disable top constraint since we no longer need it.
         self.detailsTopConstraint.isActive = false
         self.detailsView.superview?.layoutIfNeeded()
+        */
 
-        LOG("details height min: '\(self.detailsHeightMin)' max: '\(self.detailsHeightMax)'")
+        // Round (visible) top.
+        self.detailsBackgroundView.layer.cornerRadius = 20.0
+        self.detailsBackgroundView.layer.masksToBounds = true
+
+        self.detailsView.layoutChanged = { [weak self] in
+            guard let this = self else { return }
+            LOG("DetailsView layout changed")
+            let detailsHeightMin = this.detailsHeightConstraint.constant
+            let detailsHeightMax = this.detailsView.frame.size.height
+            LOG("details height min: '\(detailsHeightMin)' max: '\(detailsHeightMax)'")
+        }
+
     }
-    
+
 }
