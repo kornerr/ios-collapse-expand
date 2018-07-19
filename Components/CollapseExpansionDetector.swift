@@ -13,9 +13,28 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
     var activationDistance: CGFloat = 10
 
     var translation: CGFloat = 0
+    {
+        didSet
+        {
+            if let report = translationChanged
+            {
+                report()
+            }
+        }
+    }
     var translationChanged: SimpleCallback?
 
-    private var isActive = false
+    private(set) var isActive = false
+    {
+        didSet
+        {
+            if let report = isActiveChanged
+            {
+                report()
+            }
+        }
+    }
+    var isActiveChanged: SimpleCallback?
 
     private var recognizer: UIPanGestureRecognizer!
 
@@ -52,18 +71,24 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
             {
                 self.isActive = true
             }
-
-            self.translation = translation.y
-
-            // Report translation.
-            if let report = translationChanged
-            {
-                report()
-            }
         }
         else
         {
             self.isActive = false
+        }
+
+        // Finish pan.
+        if
+            self.isActive,
+            recognizer.state == .ended
+        {
+            self.isActive = false
+        }
+
+        // Accept translation for active state only.
+        if self.isActive
+        {
+            self.translation = translation.y
         }
     }
 
