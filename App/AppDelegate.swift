@@ -48,16 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
     }
 
-    enum TargetState
-    {
-        case none
-        case collapse
-        case expand
-    }
-
-    private var targetState = TargetState.none
-
-    private var targetStateDetectionDistance: CGFloat = 30
+    // Complete motion after passing this distance.
+    private var completionDistance: CGFloat = 30
 
     private var baseHeight: CGFloat = 0
 
@@ -70,46 +62,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.detector.translationChanged = { [weak self] in
             guard let this = self else { return }
             let translation = this.detector.translation
-            if fabs(translation) > this.targetStateDetectionDistance
-            {
-                this.targetState =
-                    (translation < 0) ?
-                    .expand :
-                    .collapse
-            }
-            else
-            {
-                this.targetState = .none
-            }
-
             this.mainVC.detailsHeight = this.baseHeight - translation
-
-            var msg = ""
-            msg += "Current translation: '\(translation)'"
-            msg += "Target state: '\(this.targetState)'"
-            LOG(msg)
         }
 
-        // Animate to target state.
         // Set base height.
-        // Reset target state.
+        // Animate to target state.
         self.detector.isActiveChanged = { [weak self] in
             guard let this = self else { return }
 
+            let completionDistanceReached =
+                fabs(this.detector.translation) > this.completionDistance
+            let shouldExpand = (this.detector.translation < 0)
+            let distanceToBottom = fabs(this.mainVC.detailsHeight - this.mainVC.detailsHeightMin)
+            let distanceToTop = fabs(this.mainVC.detailsHeight - this.mainVC.detailsHeightMax)
+            let isCollapsed = (distanceToTop > distanceToBottom)
+
+            var targetStateIsCollapse = false
+
+            // Target state: expanded.
+            if
+                isCollapsed &&
+                shouldExpand &&
+                completionDistanceReached
+            {
+                targetStateIsCollapse = false
+            }
+            // Target state: collapsed.
+            else if
+                !isCollapsed &&
+                !shouldExpand &&
+                completionDistanceReached
+            {
+                targetStateIsCollapse = true
+            }
+            // Revert to current state.
+            else
+            {
+                targetStateIsCollapse = isCollapsed
+            }
+
+            // Reset base height.
             this.baseHeight =
-                (this.targetState == .expand) ?
-                this.mainVC.detailsHeightMax :
-                this.mainVC.detailsHeightMin
+                targetStateIsCollapse ?
+                this.mainVC.detailsHeightMin :
+                this.mainVC.detailsHeightMax
 
             guard !this.detector.isActive else { return }
 
             UIView.animate(withDuration: 0.1) {
-                LOG("Animate.01. details height before: '\(this.mainVC.detailsHeight)'")
                 this.mainVC.detailsHeight =
-                    (this.targetState == .expand) ?
-                    this.mainVC.detailsHeightMax :
-                    this.mainVC.detailsHeightMin
-                LOG("Animate.02. details height after: '\(this.mainVC.detailsHeight)'")
+                    targetStateIsCollapse ?
+                    this.mainVC.detailsHeightMin :
+                    this.mainVC.detailsHeightMax
                 this.mainVC.detailsView.superview?.layoutIfNeeded()
             }
 
