@@ -33,6 +33,19 @@ class MainVC: UIViewController
     @IBOutlet private var detailsTopConstraint: NSLayoutConstraint!
     
     @IBOutlet private(set) var detailsView: UIView!
+    @IBOutlet var detailsTitleLabel: UILabel!
+    
+    var detailsTitle: String?
+    {
+        get
+        {
+            return self.detailsTitleLabel.text
+        }
+        set
+        {
+            self.detailsTitleLabel.text = newValue
+        }
+    }
 
     var detailsHeight: CGFloat
     {

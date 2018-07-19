@@ -48,7 +48,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="KRS-qt-T39"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag details (this part) up to expand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79h-R7-rnT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79h-R7-rnT">
                                                 <rect key="frame" x="0.0" y="30" width="320" height="518"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -92,6 +92,7 @@
                     </view>
                     <connections>
                         <outlet property="detailsHeightConstraint" destination="VoS-fp-vlz" id="dRr-0S-RgL"/>
+                        <outlet property="detailsTitleLabel" destination="79h-R7-rnT" id="qQk-Bv-oyh"/>
                         <outlet property="detailsTopConstraint" destination="26x-im-IKq" id="ORq-bA-B64"/>
                         <outlet property="detailsView" destination="abX-Xc-cYo" id="IeR-qk-R1v"/>
                     </connections>

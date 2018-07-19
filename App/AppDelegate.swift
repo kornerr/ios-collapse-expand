@@ -69,11 +69,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Animate to height once panning finished.
         self.collapseExpansionController.completeHeightChange = { [weak self] in
             guard let this = self else { return }
-            UIView.animate(withDuration: 0.1) {
+            let animations = {
                 this.mainVC.detailsHeight = this.collapseExpansionController.height
                 this.mainVC.detailsView.superview?.layoutIfNeeded()
             }
+            let completion: ((Bool) -> Void) = { _ in
+                // Set details title based on the state.
+                let isCollapsed = (this.mainVC.detailsHeight == this.mainVC.detailsHeightMin)
+                let title =
+                    isCollapsed ?
+                    NSLocalizedString("Details.Title.Collapsed", comment: "") :
+                    NSLocalizedString("Details.Title.Expanded", comment: "")
+                this.mainVC.detailsTitle = title
+            }
+            UIView.animate(
+                withDuration: 0.1,
+                animations: animations,
+                completion: completion
+            )
         }
+
+        // Set initial title.
+        self.mainVC.detailsTitle =
+            NSLocalizedString("Details.Title.Collapsed", comment: "")
     }
 
 }

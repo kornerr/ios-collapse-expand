@@ -12,6 +12,7 @@
 		BF_495835508772 = {isa = PBXBuildFile; fileRef = FR_451058661480 /* CollapseExpand.app */; };
 		BF_650573867707 /* CollapseExpansionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_389386417763 /* CollapseExpansionController.swift */; };
 		BF_805627005570 /* SimpleCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_767727172060 /* SimpleCallback.swift */; };
+		BF_822935874640 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FR_723695850563 /* Localizable.strings */; };
 		BF_855343681623 /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FR_767332964640 /* MainVC.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		FR_402055868080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FR_451058661480 /* CollapseExpand.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CollapseExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FR_723695850563 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		FR_767332964640 /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
 		FR_767727172060 /* SimpleCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallback.swift; sourceTree = "<group>"; };
 		FR_879971130433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 			children = (
 				FR_879971130433 /* AppDelegate.swift */,
 				FR_585019282326 /* Info.plist */,
+				FR_723695850563 /* Localizable.strings */,
 				FR_767332964640 /* MainVC.storyboard */,
 				FR_402055868080 /* MainVC.swift */,
 				FR_767727172060 /* SimpleCallback.swift */,
@@ -110,6 +113,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF_822935874640 /* Localizable.strings in Resources */,
 				BF_855343681623 /* MainVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
