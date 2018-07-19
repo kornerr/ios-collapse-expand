@@ -3,40 +3,17 @@ import UIKit
 
 private func LOG(_ message: String)
 {
-    NSLog("CollapserExpander \(message)")
+    NSLog("CollapseExpansionController \(message)")
 }
 
-// collapse/expansion when panning vertically.
-class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
+// Controll collapse/expansion when panning vertically.
+class CollapseExpansionController: NSObject, UIGestureRecognizerDelegate
 {
-    // Only start motion once minimum required distance has been passed.
+
+    // MARK: - SETUP
+
+    // Only start tracking translation once `activateDistance` has been passed.
     var activationDistance: CGFloat = 10
-
-    var translation: CGFloat = 0
-    {
-        didSet
-        {
-            if let report = translationChanged
-            {
-                report()
-            }
-        }
-    }
-    var translationChanged: SimpleCallback?
-
-    private(set) var isActive = false
-    {
-        didSet
-        {
-            if let report = isActiveChanged
-            {
-                report()
-            }
-        }
-    }
-    var isActiveChanged: SimpleCallback?
-
-    private var recognizer: UIPanGestureRecognizer!
 
     init(trackedView: UIView)
     {
@@ -48,10 +25,40 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
         trackedView.addGestureRecognizer(self.recognizer)
     }
 
+    // MARK: - TRANSLATION AND ACTIVATION
+
+    // Current translation.
+    private var translation: CGFloat = 0
+    {
+        didSet
+        {
+            if let report = translationChanged
+            {
+                report()
+            }
+        }
+    }
+    private var translationChanged: SimpleCallback?
+
+    // Whether this controller is currently active.
+    private var isActive = false
+    {
+        didSet
+        {
+            if let report = isActiveChanged
+            {
+                report()
+            }
+        }
+    }
+    var isActiveChanged: SimpleCallback?
+
+    // Source of pan gestures.
+    private var recognizer: UIPanGestureRecognizer!
+
     @objc func pan(_ recognizer: UIPanGestureRecognizer)
     {
         guard let view = recognizer.view else { return }
-
         let translation = recognizer.translation(in: view)
 
         if recognizer.state != .cancelled
@@ -69,7 +76,7 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
             self.isActive = false
         }
 
-        // Finish panning.
+        // Deactivate when done.
         if
             self.isActive,
             recognizer.state == .ended
@@ -77,7 +84,7 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
             self.isActive = false
         }
 
-        // Accept translation for active state only.
+        // Translate.
         if self.isActive
         {
             self.translation = translation.y

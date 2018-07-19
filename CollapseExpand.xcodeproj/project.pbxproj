@@ -11,11 +11,13 @@
 		BF_441919090723 /* CollapseExpansionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_904359042796 /* CollapseExpansionDetector.swift */; };
 		BF_468979976040 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_402055868080 /* MainVC.swift */; };
 		BF_495835508772 = {isa = PBXBuildFile; fileRef = FR_451058661480 /* CollapseExpand.app */; };
+		BF_650573867707 /* CollapseExpansionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_389386417763 /* CollapseExpansionController.swift */; };
 		BF_805627005570 /* SimpleCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_767727172060 /* SimpleCallback.swift */; };
 		BF_855343681623 /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FR_767332964640 /* MainVC.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FR_389386417763 /* CollapseExpansionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseExpansionController.swift; sourceTree = "<group>"; };
 		FR_402055868080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FR_451058661480 /* CollapseExpand.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CollapseExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +31,7 @@
 		G_4197929496137 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FR_389386417763 /* CollapseExpansionController.swift */,
 				FR_904359042796 /* CollapseExpansionDetector.swift */,
 			);
 			path = Components;
@@ -122,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_232358545730 /* AppDelegate.swift in Sources */,
+				BF_650573867707 /* CollapseExpansionController.swift in Sources */,
 				BF_441919090723 /* CollapseExpansionDetector.swift in Sources */,
 				BF_468979976040 /* MainVC.swift in Sources */,
 				BF_805627005570 /* SimpleCallback.swift in Sources */,
