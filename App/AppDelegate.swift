@@ -56,7 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     private func setupCollapseExpansion()
     {
         // Setup collapse/expansion.
-        self.detector = CollapseExpansionDetector(trackedView: self.mainVC.detailsView)
+        self.detector =
+            CollapseExpansionDetector(trackedView: self.mainVC.detailsView)
 
         // Follow pan gesture and detect target state.
         self.detector.translationChanged = { [weak self] in

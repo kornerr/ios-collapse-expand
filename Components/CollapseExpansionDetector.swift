@@ -9,7 +9,7 @@ private func LOG(_ message: String)
 // Detect collapse/expansion when panning vertically.
 class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
 {
-    // Only start the action once delta has been panned.
+    // Only start motion once minimum required distance has been passed.
     var activationDistance: CGFloat = 10
 
     var translation: CGFloat = 0
@@ -50,15 +50,7 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
 
     @objc func pan(_ recognizer: UIPanGestureRecognizer)
     {
-        guard
-            let view = recognizer.view 
-        else
-        {
-            LOG("ERROR Gesture recognizer has no view. Cannot proceed")
-            return
-        }
-
-        //if recognizer.state == .begin
+        guard let view = recognizer.view else { return }
 
         let translation = recognizer.translation(in: view)
 
@@ -77,7 +69,7 @@ class CollapseExpansionDetector: NSObject, UIGestureRecognizerDelegate
             self.isActive = false
         }
 
-        // Finish pan.
+        // Finish panning.
         if
             self.isActive,
             recognizer.state == .ended
