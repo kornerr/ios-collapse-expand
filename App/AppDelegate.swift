@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     // MARK: - APPLICATION
 
     private var mainVC: MainVC!
-    private var detector: CollapseExpansionDetector!
+    private var collapseExpansionController: CollapseExpansionController!
 
     private func setupApplication()
     {        
@@ -48,76 +48,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
     }
 
-    // Complete motion after passing this distance.
-    private var completionDistance: CGFloat = 30
-
-    private var baseHeight: CGFloat = 0
-
     private func setupCollapseExpansion()
     {
-        // Setup collapse/expansion.
-        self.detector =
-            CollapseExpansionDetector(trackedView: self.mainVC.detailsView)
+        let controller =
+            CollapseExpansionController(
+                trackedView: self.mainVC.detailsView,
+                minHeight: self.mainVC.detailsHeightMin,
+                maxHeight: self.mainVC.detailsHeightMax
+            )
+        controller.activationDistance = 10
+        controller.completionDistance = 30
+        self.collapseExpansionController = controller
 
-        // Follow pan gesture and detect target state.
-        self.detector.translationChanged = { [weak self] in
+        // Set current height while panning.
+        self.collapseExpansionController.heightChanged = { [weak self] in
             guard let this = self else { return }
-            let translation = this.detector.translation
-            this.mainVC.detailsHeight = this.baseHeight - translation
+            this.mainVC.detailsHeight = this.collapseExpansionController.height
         }
 
-        // Set base height.
-        // Animate to target state.
-        self.detector.isActiveChanged = { [weak self] in
+        // Animate to height once panning finished.
+        self.collapseExpansionController.completeHeightChange = { [weak self] in
             guard let this = self else { return }
-
-            let completionDistanceReached =
-                fabs(this.detector.translation) > this.completionDistance
-            let shouldExpand = (this.detector.translation < 0)
-            let distanceToBottom = fabs(this.mainVC.detailsHeight - this.mainVC.detailsHeightMin)
-            let distanceToTop = fabs(this.mainVC.detailsHeight - this.mainVC.detailsHeightMax)
-            let isCollapsed = (distanceToTop > distanceToBottom)
-
-            var targetStateIsCollapse = false
-
-            // Target state: expanded.
-            if
-                isCollapsed &&
-                shouldExpand &&
-                completionDistanceReached
-            {
-                targetStateIsCollapse = false
-            }
-            // Target state: collapsed.
-            else if
-                !isCollapsed &&
-                !shouldExpand &&
-                completionDistanceReached
-            {
-                targetStateIsCollapse = true
-            }
-            // Revert to current state.
-            else
-            {
-                targetStateIsCollapse = isCollapsed
-            }
-
-            // Reset base height.
-            this.baseHeight =
-                targetStateIsCollapse ?
-                this.mainVC.detailsHeightMin :
-                this.mainVC.detailsHeightMax
-
-            guard !this.detector.isActive else { return }
-
             UIView.animate(withDuration: 0.1) {
-                this.mainVC.detailsHeight =
-                    targetStateIsCollapse ?
-                    this.mainVC.detailsHeightMin :
-                    this.mainVC.detailsHeightMax
+                this.mainVC.detailsHeight = this.collapseExpansionController.height
                 this.mainVC.detailsView.superview?.layoutIfNeeded()
             }
-
         }
     }
 
