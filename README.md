@@ -24,11 +24,13 @@ The are several entities at play:
         * priority: 1000
 * `CollapseExpansionController`
     * accepts height range available for expansion
-    * installs `UIPanGestureRecognizer` into tracked view (in our case it's `DetailsView`)
+    * installs `UIPanGestureRecognizer` into tracked view
     * reports new `height` values each pan gesture
-    * reports final `height` once pan gesture finished
+    * reports final `height` value once pan gesture is finished
 * `AppDelegate`
-    * creates `CollapseExpansionController` once height range for `DetailsView` becomes available
+    * creates `CollapseExpansionController`
+        * only does so once height range of `DetailsView` becomes available
+        * provides `DetailsView` as tracked view
     * sets `DetailsView` height to the `height` while panning (`heightChanged` callback)
     * animates `DetailsView` height to the `height` after panning (`completeHeightChange` callback)
 
