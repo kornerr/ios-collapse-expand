@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
         self.window!.rootViewController = self.mainVC
 
-        // Setup collapse/expansion once VC has been loaded.
-        self.mainVC.loaded = { [weak self] in
+        // Setup collapse/expansion once details heights are available.
+        self.mainVC.detailsHeightsAreAvailable = { [weak self] in
             guard let this = self else { return }
             this.setupCollapseExpansion()
         }
@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     private func setupCollapseExpansion()
     {
+        LOG("setupCollapseExpansion")
         let controller =
             CollapseExpansionController(
                 trackedView: self.mainVC.detailsView,
@@ -81,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                     NSLocalizedString("Details.Title.Collapsed", comment: "") :
                     NSLocalizedString("Details.Title.Expanded", comment: "")
                 this.mainVC.detailsTitle = title
+                this.mainVC.detailsDescriptionIsVisible = !isCollapsed
             }
             UIView.animate(
                 withDuration: 0.1,
