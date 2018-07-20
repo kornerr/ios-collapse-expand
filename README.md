@@ -14,7 +14,7 @@ This is what the app looks like:
 The are several entities at play:
 
 * `LayoutReportingView`
-    * a simple `UIView` derivative to report when `UIView` instance gets `layoutViews()` call
+    * a simple `UIView` derivative to report when `UIView` instance gets `layoutSubviews()` call
 * `MainVC.storyboard`
     * provides `DetailsView`, which is `LayoutReportingView`
     * constraints `DetailsView` to the collapsed state with a fixed height constraint
